@@ -1,5 +1,7 @@
 <context>
-    <input pattern="(hi|hello) *">
+	<input id = "startmessage" pattern = "/start">
+		<output value=" hey there! I am a bot for getting a Taxi. Say hey to me!">
+    <input id ="greeting" pattern="(hi|hello|hey|sup|start) *">
         <!-- Greet the user if we know his/her name -->
         <output value="Hello $UserName!" if="full($UserName)"/>
 

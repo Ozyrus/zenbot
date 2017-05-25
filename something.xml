@@ -1,6 +1,6 @@
 <context>
 	<input id = "startmessage" pattern = "/start">
-		<output value=" hey there! I am a bot for getting a Taxi. Say hey to me!">
+		<output value=" hey there! I am a bot for getting a Taxi. Say hey to me!"/>
 	</input>
 	<context>
 	    <input id ="greeting" pattern="(hi|hello|hey|sup|start) *">

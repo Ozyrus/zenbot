@@ -1,19 +1,23 @@
 <context>
+	<context>
 	<input id = "startmessage" pattern = "/start">
 		<output value=" hey there! I am a bot for getting a Taxi. Say hey to me!">
-    <input id ="greeting" pattern="(hi|hello|hey|sup|start) *">
-        <!-- Greet the user if we know his/her name -->
-        <output value="Hello $UserName!" if="full($UserName)"/>
+	</input>
+	</context>
+	<context>
+	    <input id ="greeting" pattern="(hi|hello|hey|sup|start) *">
+	        <!-- Greet the user if we know his/her name -->
+	        <output value="Hello $UserName!" if="full($UserName)"/>
 
-        <!-- Or activate an inner context to ask the user about his/her name -->
-        <context if="empty($UserName)" modal="true"> <!-- We use a modal context, so our bot will recognize any text as the user’s name -->
-            <output value="Hi! What is your name?"/>
+	        <!-- Or activate an inner context to ask the user about his/her name -->
+	        <context if="empty($UserName)" modal="true"> <!-- We use a modal context, so our bot will recognize any text as the user’s name -->
+	            <output value="Hi! What is your name?"/>
 
-            <input pattern="$Text">
-                <!-- Store the user’s name in the UserName variable with "user" scope to save it into database -->
-                <var name="UserName" value="$Text" scope="user"/>
-                <output value="Nice to meet you, $UserName!"/> <!-- Using the placeholder in output -->
-            </input>
-        </context>
-    </input>
+	            <input pattern="$Text">
+	                <!-- Store the user’s name in the UserName variable with "user" scope to save it into database -->
+	                <var name="UserName" value="$Text" scope="user"/>
+	                <output value="Nice to meet you, $UserName!"/> <!-- Using the placeholder in output -->
+	            </input>
+	        </context>
+	</context>
 </context>

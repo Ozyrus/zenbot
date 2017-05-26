@@ -39,17 +39,36 @@
 							        	</context>
 							        	<context id = "Economy" if = "full$Economy">
 							        			<output value="Okay, Economy class it is."/>
+							        			<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
 							        			<var name="cartype" value="Economy" scope="user"/>
 							        				<context id = "dropoff"/>
+							        			</input>
+							        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
+							        				<output value ="Alright, just say again what would you like"/>
+							        				<context id = "cartype"/>
+							        			</input>
 							        	</context>
 							        	<context id = "Comfort" if = "full$Comfort">
 							        			<output value="Okay, Comfort class it is"/>
+							        			<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
 							        			<var name="cartype" value="Comfort" scope="user"/>
 							        				<context id = "dropoff"/>
+							        			</input>
+							        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
+							        				<output value ="Alright, just say again what would you like"/>
+							        				<context id = "cartype"/>
+							        			</input>
 							        	</context>
 							        	<context id = "Nothing" if = "empty$Economy" and "empty$Business" and "empty$Comfort">
-							        			<output value="Don't quite understand you, sorry. Please repeat what class would you like"/>
-							        			<context id= "cartype"/>
+							        			<output value="Don't quite understand you, sorry. Maybe I should order a comfort for you?"/>
+							        			<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
+							        			<var name="cartype" value="Business" scope="user"/>
+							        				<context id = "dropoff"/>
+							        			</input>
+							        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
+							        				<output value ="Alright, just say again what would you like"/>
+							        				<context id = "cartype"/>
+							        			</input>
 							        	</context>
 							        </input>
 					        	</context>

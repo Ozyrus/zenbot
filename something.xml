@@ -3,7 +3,7 @@
 		<output value=" hey there! I am a bot for getting a Taxi. Say hey to me!"/> <!-- startmessage-->
 		<context id = "mainscenario">
 			<input id = "greeting_return" pattern="$Text">
-				<output value="Test successful!"/>
+				<output value="Gotta say hay to me, man!!"/>
 				<context id ='mainscenario'/>
 			</input>
 		    <input id ="greeting" pattern="(hi|hello|hey|sup|start) *">
@@ -13,7 +13,6 @@
 		        <!-- Or activate an inner context to ask the user about his/her name -->
 		        <context if="empty($UserName)" modal="true"> <!-- We use a modal context, so our bot will recognize any text as the user’s name -->
 		            <output value="Hi! What is your name?"/>
-
 		            <input pattern="$Text">
 		                <!-- Store the user’s name in the UserName variable with "user" scope to save it into database -->
 		                <var name="UserName" value="$Text" scope="user"/>
@@ -29,6 +28,10 @@
 				        		<pattern name="Economy" value="(Economy|Econom|Cheap|economy)"/>
 				        		<pattern name="Comfort" value="(Comfort|Normal|Any|comfort)"/>
 				        		<output value = "Now for the vehicle type. Around your location, there are Buisness class cars available, economy cars and comfort class. Which one would you like?" />
+				        		<input id = "class_return" pattern="$Text">
+									<output value="You gotta type in class type!"/>
+									<context id ='cartype'/>
+								</input>
 					        	<input pattern = "[$Business|$Economy|$Comfort] *">
 					        		<context id = "Business" if = "full($Business)">
 					        			<output value="Okay, Business class it is. Is that right?"/>

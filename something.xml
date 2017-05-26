@@ -43,7 +43,7 @@
 									<context id ='cartype'/>
 								</input>
 					        	<input pattern = "($Business|$Economy|$Comfort) *">
-					        		<context id = "Business" if = "full($Business)">
+					        		<context id = "Business" if = "full($Business) and empty($Economy) and empty($Comfort)">
 					        			<output value="Okay, Business class it is. Is that right?"/>
 					        			<input id = "type_return1" pattern="$Text">
 											<output value="You gotta say yes or no, mate!"/>

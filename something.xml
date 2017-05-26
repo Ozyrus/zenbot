@@ -72,18 +72,22 @@
 						        	</context>
 						        <input pattern = "restart">
 									<context id = "mainscenario"/>
+								</input>
 						        </input>
 				        	</context>
 				        	<input pattern = "restart">
 								<context id = "mainscenario"/>
+							</input>
 					        </input>
 				        </context>
 				    <input pattern = "restart">
 						<context id = "mainscenario"/>
+					</input>
 		            </input>
 		        </context>
 		    <input pattern = "restart">
 				<context id = "mainscenario"/>
+			</input>
 		    </input>
 		</context>
 		<context id="dropoff">
@@ -117,6 +121,8 @@
 	</input>
 	<input pattern = "$Text">
 		<output value = "I'm a Taxi bot. Beep bop!"/>
+	</input>
 	<input pattern = "restart">
 		<context id = "mainscenario"/>
+	</input>
 </context>

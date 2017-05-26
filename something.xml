@@ -23,37 +23,29 @@
 					        	<context if="empty($cartype)" modal = "true" id = "cartype">
 					        		<output value = "Now for the vehicle type. Around your location, there are Buisness class cars available, economy cars and comfort class. Which one would you like?" />
 						        	<input pattern = "(Business [class|car[s]]*">
-						        		<context>
 						        			<output value="Okay, Business class it is."/>
 						        			<var name="cartype" value="$Anothertext" scope="user"/>
 						        			<context if = "empty($DropoffAdress" modal="true">
 						        				<context id = "dropoff"/>
 						        			</context>
-						        		</context>
 						        	</input>
 						        	<input pattern = "(Economy [class|car[s]]*">
-						        		<context>
 						        			<output value="Okay, Economy class it is."/>
 						        			<var name="cartype" value="$Anothertext" scope="user"/>
 						        			<context if = "empty($DropoffAdress" modal="true">
 						        				<context id = "dropoff"/>
 						        			</context>
-						        		</context>
 						        	</input>
 						        	<input pattern = "(Comfort [class|car[s]]*">
-						        		<context>
 						        			<output value="Okay, Comfort class it is."/>
 						        			<var name="cartype" value="$Anothertext" scope="user"/>
 						        			<context if = "empty($DropoffAdress" modal="true">
 						        				<context id = "dropoff"/>
 						        			</context>
-						        		</context>
 						        	</input>
 						        	<input pattern = "*">
-						        		<context>
 						        			<output value="Don't quite understand you, sorry. Please repeat what class would you like"/>
 						        			<context id= "cartype"/>
-						        		</context>
 						        	</input>
 					        	</context>
 					        </input>

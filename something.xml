@@ -31,6 +31,7 @@
 			        				<output value = 'okay, choose your destiny. Economy, Business, Comfort?'/>
 			        				<context id = "cartype"/>
 			        			</input>
+			        		</input>
 				        	<context if="empty($cartype)" modal = "true" id = "cartype">
 				        		<pattern name="Business" value="(Business|VIP|business)"/>
 				        		<pattern name="Economy" value="(Economy|Econom|Cheap|economy)"/>

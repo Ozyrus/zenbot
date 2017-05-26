@@ -22,7 +22,15 @@
 				        	<input pattern = "$Text">
 				        		<!--Store user's adress -->
 				        	<var name="Adress" value="$Text" scope="user"/>
-			        		<output value="Alright, got it. Your adress is $Adress"/>
+			        		<output value="Alright, got it. Your adress is $Adress. Would you like to order $cartype to this location or choose another one?"/>
+			        			<input pattern = '$cartype|yes'>
+			        				<output value = 'sure. just enter your dropoff point'/>
+			        				<context id = "dropoff"/>
+			        			</input>
+			        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
+			        				<output value = 'okay, choose your destiny. Economy, Business, Comfort?'/>
+			        				<context id = "cartype"/>
+			        			</input>
 				        	<context if="empty($cartype)" modal = "true" id = "cartype">
 				        		<pattern name="Business" value="(Business|VIP|business)"/>
 				        		<pattern name="Economy" value="(Economy|Econom|Cheap|economy)"/>

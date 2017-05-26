@@ -71,24 +71,12 @@
 					        			</input>
 						        	</context>
 						        </input>
-						        <input pattern = "restart">
-									<context id = "mainscenario"/>
-								</input>
 				        	</context>
 				        	</input>
-				        	<input pattern = "restart">
-								<context id = "mainscenario"/>
-							</input>
 				        </context>
 				    </input>
-				    <input pattern = "restart">
-						<context id = "mainscenario"/>
-					</input>
 		        </context>
 		    </input>
-		    <input pattern = "restart">
-				<context id = "mainscenario"/>
-			</input>
 		</context>
 		<context id="dropoff">
 				<output value="$UserName, i'm going to need your dropoff adress now. Our service operates only in Moscow, so you gotta write some Moscow street and house number"/>
@@ -96,9 +84,6 @@
 						<!--Store user's dropoff adress -->
 					<var name="DropoffAdress" value="$Text" scope="user"/>
 						<output value="Alright, got it. Your dropoff adress is $DropoffAdress"/>
-					</input>
-					<input pattern = "restart">
-						<context id = "mainscenario"/>
 					</input>
 		</context>
 		<context id = "Ridecalc">
@@ -108,16 +93,10 @@
 						<input pattern ='$Text'>
 							<output value="Your taxi is on the way. It's BMW M5, number E545KX. ALl further contact is through driver. Cheers!"/>
 						</input>
-						<input pattern = "restart">
-							<context id = "mainscenario"/>
-						</input>
 				</input>
 				<input pattern = "(No|Nope|Nah|N|no)">
 					<output value = "That's okay. You can just choose another class or dropoff adress!"/>
 					<context id ="cartype"/>
-				</input>
-				<input pattern = "restart">
-					<context id = "mainscenario"/>
 				</input>
 		</context>	
 	</input>

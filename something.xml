@@ -24,11 +24,11 @@
 				        	<var name="Adress" value="$Text" scope="user"/>
 				        	<context if = "full($cartype)" modal = "true">
 			        		<output value="Alright, got it. Your adress is $Adress. Would you like to order $cartype to this location or choose another one?"/>
-			        			<input pattern = 'yes'>
+			        			<input pattern = '(yes|$cartype)'>
 			        				<output value = 'sure. just enter your dropoff point'/>
 			        				<context id = "dropoff"/>
 			        			</input>
-			        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
+			        			<input pattern = "(no|nope|No|Nope|Nah|nah|another|other *)">
 			        				<output value = 'okay, choose your destiny. Economy, Business, Comfort?'/>
 			        				<context id = "cartype"/>
 			        			</input>

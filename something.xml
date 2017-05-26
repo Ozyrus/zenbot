@@ -22,8 +22,8 @@
 				        		<output value="Alright, got it. Your adress is $Adress"/>
 					        	<context if="empty($cartype)" modal = "true" id = "cartype">
 					        		<pattern name="Business" value="(Business|VIP|business)">
-					        		<pattern name="Economy" value="(Economy|Econom|Cheap|economy)"
-					        		<pattern name="Comfort" value="(Comfort|Normal|Any|comfort)"
+					        		<pattern name="Economy" value="(Economy|Econom|Cheap|economy)">
+					        		<pattern name="Comfort" value="(Comfort|Normal|Any|comfort)">
 					        		<output value = "Now for the vehicle type. Around your location, there are Buisness class cars available, economy cars and comfort class. Which one would you like?" />
 						        	<input pattern = "* $Business $Economy $ Comfort *">
 						        		<context id = "Business" if "full$Business">

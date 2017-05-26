@@ -70,12 +70,20 @@
 					        				<context id = "cartype"/>
 					        			</input>
 						        	</context>
+						        <input pattern = "restart">
+									<context id = "mainscenario"/>
 						        </input>
 				        	</context>
+				        	<input pattern = "restart">
+								<context id = "mainscenario"/>
 					        </input>
 				        </context>
+				    <input pattern = "restart">
+						<context id = "mainscenario"/>
 		            </input>
 		        </context>
+		    <input pattern = "restart">
+				<context id = "mainscenario"/>
 		    </input>
 		</context>
 		<context id="dropoff">
@@ -84,6 +92,8 @@
 						<!--Store user's dropoff adress -->
 					<var name="DropoffAdress" value="$Text" scope="user"/>
 						<output value="Alright, got it. Your dropoff adress is $DropoffAdress"/>
+					<input pattern = "restart">
+						<context id = "mainscenario"/>
 					<context id="Ridecalc"/>
 					</input>
 		</context>
@@ -91,11 +101,22 @@
 			<output value="$UserName, Your ridefare will be 450 Roubles, for ride in $cartype car from $Adress to $DropoffAdress. Is that okay for you?"/>
 				<input pattern = "(Yes|Yea|Yeah|Ok|Fine|Y|y)">
 					<output value = "Great! Your car will be waiting in 5 minutes"/>
+						<input pattern ='$Text'>
+							<output value="Your taxi is on the way. It's BMW M5, number E545KX. ALl further contact is through driver. Cheers!"/>
+						</input>
+						<input pattern = "restart">
+							<context id = "mainscenario"/>
 				</input>
 				<input pattern = "(No|Nope|Nah|N|no)">
 					<output value = "That's okay. You can just choose another class or dropoff adress!"/>
 					<context id ="cartype"/>
+				<input pattern = "restart">
+					<context id = "mainscenario"/>
 				</input>
 		</context>	
 	</input>
+	<input pattern = "$Text">
+		<output value = "I'm a Taxi bot. Beep bop!"/>
+	<input pattern = "restart">
+		<context id = "mainscenario"/>
 </context>

@@ -50,7 +50,7 @@
 												<context id ='Business'/>
 										</input>
 										<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
-					        			<var name="cartype" value="Business" scope="user"/>
+					        			<var name="cartype" value="Business" scope="context"/>
 					        				<context id = "dropoff"/>
 					        			</input>
 					        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
@@ -58,14 +58,14 @@
 					        					<context id = "cartype"/>
 					        			</input>
 						        	</context>
-						        	<context id = "Economy" if = "full($Economy)">
+						        	<context id = "Economy" if = "full($Economy) and ">
 					        			<output value="Okay, Economy class, is it?"/>
 					        			<input id = "type_return2" pattern="$Text">
 											<output value="You gotta say yes or no, mate!"/>
 												<context id ='Economy'/>
 										</input>
 					        			<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
-					        			<var name="cartype" value="Economy" scope="user"/>
+					        			<var name="cartype" value="Economy" scope="context"/>
 					        				<context id = "dropoff"/>
 					        			</input>
 					        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
@@ -80,7 +80,7 @@
 												<context id ='Comfort'/>
 										</input>
 					        			<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
-					        			<var name="cartype" value="Comfort" scope="user"/>
+					        			<var name="cartype" value="Comfort" scope="context"/>
 					        				<context id = "dropoff"/>
 					        			</input>
 					        			<input pattern = "(no|nope|No|Nope|Nah|nah)">

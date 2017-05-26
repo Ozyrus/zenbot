@@ -22,37 +22,37 @@
 	        		<!--Store user's adress -->
 	        	<var name="Adress" value="$Sometext" scope="user"/>
 	        		<output value="Alright, got it. Your adress is $Adress"/>
-	        	</input>
-	        	<context if="empty($cartype)" modal = "true" id = "cartype">
-	        		<output value = "Now for the vehicle type. Around your location, there are Buisness class cars available, economy cars and comfort class. Which one would you like?" />
-	        	<input pattern = "$Anothertext">
-	        		<context if = "$Anothertext" = "(Business [class|car[s]]*">
-	        			<output value="Okay, Business class it is."/>
-	        			<var name="cartype" value="$Anothertext" scope="user"/>
-	        			<context if = "empty($DropoffAdress" modal="true">
-	        				<context id = "dropoff"/>
-	        			</context>
-	        		</context>
-	        		<context if = "$Anothertext" = "(Economy [class|car[s]]*">
-	        			<output value="Okay, Economy class it is."/>
-	        			<var name="cartype" value="$Anothertext" scope="user"/>
-	        			<context if = "empty($DropoffAdress" modal="true">
-	        				<context id = "dropoff"/>
-	        			</context>
-	        		</context>
-	        		<context if = "$Anothertext" = "(Comfort [class|car[s]]*">
-	        			<output value="Okay, Comfort class it is."/>
-	        			<var name="cartype" value="$Anothertext" scope="user"/>
-	        			<context if = "empty($DropoffAdress" modal="true">
-	        				<context id = "dropoff"/>
-	        			</context>
-	        		</context>
-	        		<context if = "$Anothertext" = "*">
-	        			<output value="Don't quite understand you, sorry. Please repeat what class would you like"/>
-	        			<context id= "cartype"/>
-	        		</context>
-	        	</input>
-	        	</context>
+		        	<context if="empty($cartype)" modal = "true" id = "cartype">
+		        		<output value = "Now for the vehicle type. Around your location, there are Buisness class cars available, economy cars and comfort class. Which one would you like?" />
+		        	<input pattern = "$Anothertext">
+		        		<context if = "$Anothertext" = "(Business [class|car[s]]*">
+		        			<output value="Okay, Business class it is."/>
+		        			<var name="cartype" value="$Anothertext" scope="user"/>
+		        			<context if = "empty($DropoffAdress" modal="true">
+		        				<context id = "dropoff"/>
+		        			</context>
+		        		</context>
+		        		<context if = "$Anothertext" = "(Economy [class|car[s]]*">
+		        			<output value="Okay, Economy class it is."/>
+		        			<var name="cartype" value="$Anothertext" scope="user"/>
+		        			<context if = "empty($DropoffAdress" modal="true">
+		        				<context id = "dropoff"/>
+		        			</context>
+		        		</context>
+		        		<context if = "$Anothertext" = "(Comfort [class|car[s]]*">
+		        			<output value="Okay, Comfort class it is."/>
+		        			<var name="cartype" value="$Anothertext" scope="user"/>
+		        			<context if = "empty($DropoffAdress" modal="true">
+		        				<context id = "dropoff"/>
+		        			</context>
+		        		</context>
+		        		<context if = "$Anothertext" = "*">
+		        			<output value="Don't quite understand you, sorry. Please repeat what class would you like"/>
+		        			<context id= "cartype"/>
+		        		</context>
+		        	</input>
+		        	</context>
+		        </input>
 	        </context>
 	<context id="dropoff">
 		<output value="$UserName, i'm going to need your dropoff adress now. Our service operates only in Moscow, so you gotta write some Moscow street and house number"/>

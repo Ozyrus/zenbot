@@ -1,84 +1,84 @@
 <context>
 	<input id = "startmessage" pattern = "/start">
 		<output value=" hey there! I am a bot for getting a Taxi. Say hey to me!"/> <!-- startmessage-->
-	<context>
-	    <input id ="greeting" pattern="(hi|hello|hey|sup|start) *">
-	        <!-- Greet the user if we know his/her name -->
-	        <output value="Hello $UserName!" if="full($UserName)"/>
+		<context>
+		    <input id ="greeting" pattern="(hi|hello|hey|sup|start) *">
+		        <!-- Greet the user if we know his/her name -->
+		        <output value="Hello $UserName!" if="full($UserName)"/>
 
-	        <!-- Or activate an inner context to ask the user about his/her name -->
-	        <context if="empty($UserName)" modal="true"> <!-- We use a modal context, so our bot will recognize any text as the user’s name -->
-	            <output value="Hi! What is your name?"/>
+		        <!-- Or activate an inner context to ask the user about his/her name -->
+		        <context if="empty($UserName)" modal="true"> <!-- We use a modal context, so our bot will recognize any text as the user’s name -->
+		            <output value="Hi! What is your name?"/>
 
-	            <input pattern="$Text">
-	                <!-- Store the user’s name in the UserName variable with "user" scope to save it into database -->
-	                <var name="UserName" value="$Text" scope="user"/>
-	                <output value="Nice to meet you, $UserName!"/> <!-- Using the placeholder in output -->
-	            </input>
-	        </context>
-	        <context if="empty($Adress)" modal = "true">
-	        	<output value="$UserName, i'm going to need your adress now. Our service operates only in Moscow, so you gotta write some Moscow street and house number"/>
-	        	<input pattern = "$Sometext">
-	        		<!--Store user's adress -->
-	        	<var name="Adress" value="$Sometext" scope="user"/>
-	        		<output value="Alright, got it. Your adress is $Adress"/>
-		        	<context if="empty($cartype)" modal = "true" id = "cartype">
-		        		<output value = "Now for the vehicle type. Around your location, there are Buisness class cars available, economy cars and comfort class. Which one would you like?" />
-		        	<input pattern = "(Business [class|car[s]]*">
-		        		<context>
-		        			<output value="Okay, Business class it is."/>
-		        			<var name="cartype" value="$Anothertext" scope="user"/>
-		        			<context if = "empty($DropoffAdress" modal="true">
-		        				<context id = "dropoff"/>
-		        			</context>
-		        		</context>
-		        	</input>
-		        	<input pattern = "(Economy [class|car[s]]*">
-		        		<context>
-		        			<output value="Okay, Economy class it is."/>
-		        			<var name="cartype" value="$Anothertext" scope="user"/>
-		        			<context if = "empty($DropoffAdress" modal="true">
-		        				<context id = "dropoff"/>
-		        			</context>
-		        		</context>
-		        	</input>
-		        	<input pattern = "(Comfort [class|car[s]]*">
-		        		<context>
-		        			<output value="Okay, Comfort class it is."/>
-		        			<var name="cartype" value="$Anothertext" scope="user"/>
-		        			<context if = "empty($DropoffAdress" modal="true">
-		        				<context id = "dropoff"/>
-		        			</context>
-		        		</context>
-		        	</input>
-		        	<input pattern = "*">
-		        		<context>
-		        			<output value="Don't quite understand you, sorry. Please repeat what class would you like"/>
-		        			<context id= "cartype"/>
-		        		</context>
-		        	</input>
-		        	</context>
-		        </input>
-	        </context>
-	<context id="dropoff">
-		<output value="$UserName, i'm going to need your dropoff adress now. Our service operates only in Moscow, so you gotta write some Moscow street and house number"/>
-			<input pattern = "$Dropofftext">
-				<!--Store user's dropoff adress -->
-			<var name="DropoffAdress" value="$Dropofftext" scope="user"/>
-				<output value="Alright, got it. Your dropoff adress is $DropoffAdress"/>
-			</input>
-	</context>
-	<context id = "Ridecalc">
-		<output value="$UserName, Your ridefare will be 450 Roubles, for ride in $cartype from $Adress to $DropoffAdress. Is that okay for you?"/>
-			<input pattern = "(Yes|Yea|Yeah|Ok|Fine|Y|y)">
-				<output value = "Great! Your car will be waiting in 5 minutes"/>
-			</input>
-			<input pattern = "(No|Nope|Nah|N|no)">
-				<output value = "That's okay. You can just choose another class!"/>
-				<context id ="cartype"/>
-			</input>
-	</context>	
-	    </input>
-	</context>
+		            <input pattern="$Text">
+		                <!-- Store the user’s name in the UserName variable with "user" scope to save it into database -->
+		                <var name="UserName" value="$Text" scope="user"/>
+		                <output value="Nice to meet you, $UserName!"/> <!-- Using the placeholder in output -->
+		            </input>
+		        </context>
+		        <context if="empty($Adress)" modal = "true">
+		        	<output value="$UserName, i'm going to need your adress now. Our service operates only in Moscow, so you gotta write some Moscow street and house number"/>
+		        	<input pattern = "$Sometext">
+		        		<!--Store user's adress -->
+		        	<var name="Adress" value="$Sometext" scope="user"/>
+		        		<output value="Alright, got it. Your adress is $Adress"/>
+			        	<context if="empty($cartype)" modal = "true" id = "cartype">
+			        		<output value = "Now for the vehicle type. Around your location, there are Buisness class cars available, economy cars and comfort class. Which one would you like?" />
+			        	<input pattern = "(Business [class|car[s]]*">
+			        		<context>
+			        			<output value="Okay, Business class it is."/>
+			        			<var name="cartype" value="$Anothertext" scope="user"/>
+			        			<context if = "empty($DropoffAdress" modal="true">
+			        				<context id = "dropoff"/>
+			        			</context>
+			        		</context>
+			        	</input>
+			        	<input pattern = "(Economy [class|car[s]]*">
+			        		<context>
+			        			<output value="Okay, Economy class it is."/>
+			        			<var name="cartype" value="$Anothertext" scope="user"/>
+			        			<context if = "empty($DropoffAdress" modal="true">
+			        				<context id = "dropoff"/>
+			        			</context>
+			        		</context>
+			        	</input>
+			        	<input pattern = "(Comfort [class|car[s]]*">
+			        		<context>
+			        			<output value="Okay, Comfort class it is."/>
+			        			<var name="cartype" value="$Anothertext" scope="user"/>
+			        			<context if = "empty($DropoffAdress" modal="true">
+			        				<context id = "dropoff"/>
+			        			</context>
+			        		</context>
+			        	</input>
+			        	<input pattern = "*">
+			        		<context>
+			        			<output value="Don't quite understand you, sorry. Please repeat what class would you like"/>
+			        			<context id= "cartype"/>
+			        		</context>
+			        	</input>
+			        	</context>
+			        </input>
+		        </context>
+		<context id="dropoff">
+			<output value="$UserName, i'm going to need your dropoff adress now. Our service operates only in Moscow, so you gotta write some Moscow street and house number"/>
+				<input pattern = "$Dropofftext">
+					<!--Store user's dropoff adress -->
+				<var name="DropoffAdress" value="$Dropofftext" scope="user"/>
+					<output value="Alright, got it. Your dropoff adress is $DropoffAdress"/>
+				</input>
+		</context>
+		<context id = "Ridecalc">
+			<output value="$UserName, Your ridefare will be 450 Roubles, for ride in $cartype from $Adress to $DropoffAdress. Is that okay for you?"/>
+				<input pattern = "(Yes|Yea|Yeah|Ok|Fine|Y|y)">
+					<output value = "Great! Your car will be waiting in 5 minutes"/>
+				</input>
+				<input pattern = "(No|Nope|Nah|N|no)">
+					<output value = "That's okay. You can just choose another class!"/>
+					<context id ="cartype"/>
+				</input>
+		</context>	
+		    </input>
+		</context>
 	</input>
 </context>

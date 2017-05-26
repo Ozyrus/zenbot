@@ -70,12 +70,29 @@
 					        				<context id = "cartype"/>
 					        			</input>
 						        	</context>
+<<<<<<< HEAD
 						        </input>
 				        	</context>
 				        	</input>
 				        </context>
 				    </input>
 		        </context>
+=======
+						        <input pattern = "restart">
+									<context id = "mainscenario"/>
+						        </input>
+				        	</context>
+				        	<input pattern = "restart">
+								<context id = "mainscenario"/>
+					        </input>
+				        </context>
+				    <input pattern = "restart">
+						<context id = "mainscenario"/>
+		            </input>
+		        </context>
+		    <input pattern = "restart">
+				<context id = "mainscenario"/>
+>>>>>>> parent of 442ae61... Fixed closing tags
 		    </input>
 		</context>
 		<context id="dropoff">
@@ -100,4 +117,11 @@
 				</input>
 		</context>	
 	</input>
+<<<<<<< HEAD
+=======
+	<input pattern = "$Text">
+		<output value = "I'm a Taxi bot. Beep bop!"/>
+	<input pattern = "restart">
+		<context id = "mainscenario"/>
+>>>>>>> parent of 442ae61... Fixed closing tags
 </context>

@@ -28,24 +28,18 @@
 						        	<input pattern = "* $Business $Economy $ Comfort *">
 						        		<context id = "Business" if = "full$Business">
 							        			<output value="Okay, Business class it is."/>
-							        			<var name="cartype" value="$Anothertext" scope="user"/>
-							        			<context if = "empty($DropoffAdress" modal="true">
+							        			<var name="cartype" value="Business" scope="user"/>
 							        				<context id = "dropoff"/>
-							        			</context>
 							        	</context>
 							        	<context id = "Economy" if = "full$Economy">
 							        			<output value="Okay, Economy class it is."/>
-							        			<var name="cartype" value="$Anothertext" scope="user"/>
-							        			<context if = "empty($DropoffAdress" modal="true">
+							        			<var name="cartype" value="Economy" scope="user"/>
 							        				<context id = "dropoff"/>
-							        			</context>
 							        	</context>
 							        	<context id = "Comfort" if = "full$Comfort">
 							        			<output value="Okay, Comfort class it is."/>
-							        			<var name="cartype" value="$Anothertext" scope="user"/>
-							        			<context if = "empty($DropoffAdress" modal="true">
+							        			<var name="cartype" value="Comfort" scope="user"/>
 							        				<context id = "dropoff"/>
-							        			</context>
 							        	</context>
 							        	<context id = "Nothing" if = "empty$Economy" and "empty$Business" and "empty$Comfort">
 							        			<output value="Don't quite understand you, sorry. Please repeat what class would you like"/>
@@ -73,7 +67,7 @@
 					<output value = "Great! Your car will be waiting in 5 minutes"/>
 				</input>
 				<input pattern = "(No|Nope|Nah|N|no)">
-					<output value = "That's okay. You can just choose another class!"/>
+					<output value = "That's okay. You can just choose another class or dropoff adress!"/>
 					<context id ="cartype"/>
 				</input>
 		</context>	

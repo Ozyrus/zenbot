@@ -24,7 +24,7 @@
 				        	<var name="Adress" value="$Text" scope="user"/>
 				        	<context if = "full($cartype)">
 			        		<output value="Alright, got it. Your adress is $Adress. Would you like to order $cartype to this location or choose another one?"/>
-			        			<input pattern = '$cartype|yes'>
+			        			<input pattern = '[yes|$cartype]'>
 			        				<output value = 'sure. just enter your dropoff point'/>
 			        				<context id = "dropoff"/>
 			        			</input>

@@ -34,16 +34,16 @@
 			        			</input>
 			        		</context>
 				        	<context if="empty($cartype)" modal = "true" id = "cartype">
-				        		<pattern name="Business" value="(Business|VIP|business)"/>
-				        		<pattern name="Economy" value="(Economy|Econom|Cheap|economy)"/>
-				        		<pattern name="Comfort" value="(Comfort|Normal|Any|comfort)"/>
+				        		<pattern name="Businesspat" value="(Business|VIP|business)"/>
+				        		<pattern name="Economypat" value="(Economy|Econom|Cheap|economy)"/>
+				        		<pattern name="Comfortpat" value="(Comfort|Normal|Any|comfort)"/>
 				        		<output value = "Now for the vehicle type. Around your location, there are Buisness class cars available, economy cars and comfort class. Which one would you like?" />
 				        		<input id = "class_return" pattern="$Text">
 									<output value="You gotta type in class type!"/>
 									<context id ='cartype'/>
 								</input>
-					        	<input pattern = "($Business|$Economy|$Comfort) *">
-					        		<context id = "Business" if = "full($Business) and empty($Economy) and empty($Comfort)">
+					        	<input pattern = "($Businesspat|$Economypat|$Comfortpat) *">
+					        		<context id = "Business" if = "full($Businesspat)">
 					        			<output value="Okay, Business class it is. Is that right?"/>
 					        			<input id = "type_return1" pattern="$Text">
 											<output value="You gotta say yes or no, mate!"/>
@@ -58,7 +58,7 @@
 					        					<context id = "cartype"/>
 					        			</input>
 						        	</context>
-						        	<context id = "Economy" if = "full($Economy) and empty($Business) and empty ($Comfort) ">
+						        	<context id = "Economy" if = "full($Economypat) and ">
 					        			<output value="Okay, Economy class, is it?"/>
 					        			<input id = "type_return2" pattern="$Text">
 											<output value="You gotta say yes or no, mate!"/>
@@ -73,7 +73,7 @@
 					        					<context id = "cartype"/>
 					        			</input>
 						        	</context>
-						        	<context id = "Comfort" if = "full($Comfort) and empty($Business) and empty($Economy)">
+						        	<context id = "Comfort" if = "full($Comfortpat)">
 					        			<output value="Okay, Comfort class, is it?"/>
 					        			<input id = "type_return3" pattern="$Text">
 											<output value="You gotta say yes or no, mate!"/>

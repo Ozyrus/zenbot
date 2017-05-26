@@ -42,8 +42,8 @@
 									<output value="You gotta type in class type!"/>
 									<context id ='cartype'/>
 								</input>
-					        	<input pattern = "($Businesspat|$Economypat|$Comfortpat) *">
-					        		<context id = "Business" if = "full($Businesspat)">
+					        	<input pattern = "$Businesspat *">
+					        		<context id = "Business">
 					        			<output value="Okay, Business class it is. Is that right?"/>
 					        			<input id = "type_return1" pattern="$Text">
 											<output value="You gotta say yes or no, mate!"/>
@@ -58,7 +58,9 @@
 					        					<context id = "cartype"/>
 					        			</input>
 						        	</context>
-						        	<context id = "Economy" if = "full($Economypat) and ">
+						        </input>
+						        <input pattern = "$Economypat *">
+						        	<context id = "Economy">
 					        			<output value="Okay, Economy class, is it?"/>
 					        			<input id = "type_return2" pattern="$Text">
 											<output value="You gotta say yes or no, mate!"/>
@@ -73,7 +75,9 @@
 					        					<context id = "cartype"/>
 					        			</input>
 						        	</context>
-						        	<context id = "Comfort" if = "full($Comfortpat)">
+						        </input>
+						        <input pattern = "$Comfortpat *">
+						        	<context id = "Comfort">
 					        			<output value="Okay, Comfort class, is it?"/>
 					        			<input id = "type_return3" pattern="$Text">
 											<output value="You gotta say yes or no, mate!"/>
@@ -88,7 +92,9 @@
 					        					<context id = "cartype"/>
 					        			</input>
 						        	</context>
-						        	<context id = "Nothing" if = "empty($Economy) and empty($Business) and empty($Comfort)">
+						        </input>
+						        <input pattern = "$Text">
+						        	<context id = "Nothing">
 					        			<output value="Don't quite understand you, sorry. Maybe I should order a comfort for you?"/>
 					        			<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
 					        			<var name="cartype" value="Business" scope="user"/>
@@ -99,6 +105,7 @@
 					        					<context id = "cartype"/>
 					        			</input>
 						        	</context>
+						        </input>
 						        </input>
 				        	</context>
 					        </input>

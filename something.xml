@@ -25,7 +25,7 @@
 				        		<pattern name="Economy" value="(Economy|Econom|Cheap|economy)"/>
 				        		<pattern name="Comfort" value="(Comfort|Normal|Any|comfort)"/>
 				        		<output value = "Now for the vehicle type. Around your location, there are Buisness class cars available, economy cars and comfort class. Which one would you like?" />
-					        	<input pattern = "* $Business $Economy $ Comfort *">
+					        	<input pattern = "* $Business $Economy $Comfort *">
 					        		<context id = "Business" if = "full$Business">
 						        			<output value="Okay, Business class it is. Is that right?"/>
 						        			<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">

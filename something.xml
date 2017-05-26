@@ -100,6 +100,7 @@
 						<context id = "mainscenario"/>
 					<context id="Ridecalc"/>
 					</input>
+					</input>
 		</context>
 		<context id = "Ridecalc">
 			<output value="$UserName, Your ridefare will be 450 Roubles, for ride in $cartype car from $Adress to $DropoffAdress. Is that okay for you?"/>
@@ -110,12 +111,14 @@
 						</input>
 						<input pattern = "restart">
 							<context id = "mainscenario"/>
+						</input>
 				</input>
 				<input pattern = "(No|Nope|Nah|N|no)">
 					<output value = "That's okay. You can just choose another class or dropoff adress!"/>
 					<context id ="cartype"/>
 				<input pattern = "restart">
 					<context id = "mainscenario"/>
+				</input>
 				</input>
 		</context>	
 	</input>

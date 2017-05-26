@@ -99,7 +99,6 @@
 					</input>
 					<input pattern = "restart">
 						<context id = "mainscenario"/>
-					<context id="Ridecalc"/>
 					</input>
 		</context>
 		<context id = "Ridecalc">

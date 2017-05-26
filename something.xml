@@ -108,8 +108,18 @@
 		</context>
 		<context id = "Ridecalc">
 			<output value="$UserName, Your ridefare will be 450 Roubles, for ride in $cartype car from $Adress to $DropoffAdress. Is that okay for you?"/>
+				<input pattern = "$Text">
+					<output value ="Gotta say yes or no, mate!"/>
+						<context id = "ridecalc"/>
+				</input>
 				<input pattern = "(Yes|Yea|Yeah|Ok|Fine|Y|y)">
-					<output value = "Great! Your car will be waiting in 5 minutes"/>
+					<output value = "Great! Your car will be waiting in 5 minutes on $Adress. It is a white $cartype class car, plates are E547KX."/>
+					<context id = "stillasks">
+						<input id = "stillasks" pattern="$Text">
+							<output value = "Your car is on the way. It is a white $cartype class car, plates are E547KX."/>
+							<context id = 'stillasks'/>
+						</input>
+					</context>
 				</input>
 				<input pattern = "(No|Nope|Nah|N|no)">
 					<output value = "That's okay. You can just choose another class or dropoff adress!"/>

@@ -32,6 +32,7 @@
 		        				<context id = "dropoff"/>
 		        			</context>
 		        		</context>
+		        	</input>
 		        	<input pattern = "(Economy [class|car[s]]*">
 		        		<context>
 		        			<output value="Okay, Economy class it is."/>
@@ -40,6 +41,7 @@
 		        				<context id = "dropoff"/>
 		        			</context>
 		        		</context>
+		        	</input>
 		        	<input pattern = "(Comfort [class|car[s]]*">
 		        		<context>
 		        			<output value="Okay, Comfort class it is."/>
@@ -48,6 +50,7 @@
 		        				<context id = "dropoff"/>
 		        			</context>
 		        		</context>
+		        	</input>
 		        	<input pattern = "*">
 		        		<context>
 		        			<output value="Don't quite understand you, sorry. Please repeat what class would you like"/>
@@ -67,14 +70,12 @@
 	</context>
 	<context id = "Ridecalc">
 		<output value="$UserName, Your ridefare will be 450 Roubles, for ride in $cartype from $Adress to $DropoffAdress. Is that okay for you?"/>
-			<input pattern = "$Yesnoanswer">
-				<context if ="$Yesnoanswer" = "(Yes|Yea|Yeah|Ok|Fine|Y|y)">
-					<output value = "Great! Your car will be waiting in 5 minutes"/>
-				</context>
-				<context if ="Yesnoanswer"= "(No|Nope|Nah|N|no)">
-					<output value = "That's okay. You can just choose another class!"/>
-					<context id ="cartype"/>
-				</context>
+			<input pattern = "(Yes|Yea|Yeah|Ok|Fine|Y|y)">
+				<output value = "Great! Your car will be waiting in 5 minutes"/>
+			</input>
+			<input pattern = "(No|Nope|Nah|N|no)">
+				<output value = "That's okay. You can just choose another class!"/>
+				<context id ="cartype"/>
 			</input>
 	</context>	
 	    </input>

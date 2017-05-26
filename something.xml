@@ -59,7 +59,7 @@
 							        				<context id = "cartype"/>
 							        			</input>
 							        	</context>
-							        	<context id = "Nothing" if = "empty$Economy" and "empty$Business" and "empty$Comfort">
+							        	<context id = "Nothing" if = "empty$Economy and empty$Business and empty$Comfort">
 							        			<output value="Don't quite understand you, sorry. Maybe I should order a comfort for you?"/>
 							        			<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
 							        			<var name="cartype" value="Business" scope="user"/>

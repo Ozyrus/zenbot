@@ -42,12 +42,12 @@
 									<output value="You gotta type in class type!"/>
 									<context id ='cartype'/>
 								</input>
-					        	<input pattern = "[$Business|$Economy|$Comfort] *">
+					        	<input pattern = "($Business|$Economy|$Comfort) *">
 					        		<context id = "Business" if = "full($Business)">
 					        			<output value="Okay, Business class it is. Is that right?"/>
 					        			<input id = "type_return1" pattern="$Text">
 											<output value="You gotta say yes or no, mate!"/>
-											<context id ='Business'/>
+												<context id ='Business'/>
 										</input>
 										<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
 					        			<var name="cartype" value="Business" scope="user"/>
@@ -55,14 +55,14 @@
 					        			</input>
 					        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
 					        				<output value ="Alright, just say again what would you like"/>
-					        				<context id = "cartype"/>
+					        					<context id = "cartype"/>
 					        			</input>
 						        	</context>
 						        	<context id = "Economy" if = "full($Economy)">
 					        			<output value="Okay, Economy class, is it?"/>
 					        			<input id = "type_return2" pattern="$Text">
 											<output value="You gotta say yes or no, mate!"/>
-											<context id ='Economy'/>
+												<context id ='Economy'/>
 										</input>
 					        			<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
 					        			<var name="cartype" value="Economy" scope="user"/>
@@ -70,14 +70,14 @@
 					        			</input>
 					        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
 					        				<output value ="Alright, just say again what would you like"/>
-					        				<context id = "cartype"/>
+					        					<context id = "cartype"/>
 					        			</input>
 						        	</context>
 						        	<context id = "Comfort" if = "full($Comfort)">
 					        			<output value="Okay, Comfort class, is it?"/>
 					        			<input id = "type_return3" pattern="$Text">
 											<output value="You gotta say yes or no, mate!"/>
-											<context id ='Comfort'/>
+												<context id ='Comfort'/>
 										</input>
 					        			<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
 					        			<var name="cartype" value="Comfort" scope="user"/>
@@ -85,10 +85,10 @@
 					        			</input>
 					        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
 					        				<output value ="Alright, just say again what would you like"/>
-					        				<context id = "cartype"/>
+					        					<context id = "cartype"/>
 					        			</input>
 						        	</context>
-						        	<context id = "Nothing" if = "empty$Economy and empty$Business and empty$Comfort">
+						        	<context id = "Nothing" if = "empty($Economy) and empty($Business) and empty($Comfort)">
 					        			<output value="Don't quite understand you, sorry. Maybe I should order a comfort for you?"/>
 					        			<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
 					        			<var name="cartype" value="Business" scope="user"/>
@@ -96,7 +96,7 @@
 					        			</input>
 					        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
 					        				<output value ="Alright, just say again what would you like"/>
-					        				<context id = "cartype"/>
+					        					<context id = "cartype"/>
 					        			</input>
 						        	</context>
 						        </input>

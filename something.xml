@@ -26,28 +26,28 @@
 					        		<pattern name="Comfort" value="(Comfort|Normal|Any|comfort)">
 					        		<output value = "Now for the vehicle type. Around your location, there are Buisness class cars available, economy cars and comfort class. Which one would you like?" />
 						        	<input pattern = "* $Business $Economy $ Comfort *">
-						        		<context id = "Business" if "full$Business">
+						        		<context id = "Business" if = "full$Business">
 							        			<output value="Okay, Business class it is."/>
 							        			<var name="cartype" value="$Anothertext" scope="user"/>
 							        			<context if = "empty($DropoffAdress" modal="true">
 							        				<context id = "dropoff"/>
 							        			</context>
 							        	</context>
-							        	<context id = "Economy" if "full$Economy">
+							        	<context id = "Economy" if = "full$Economy">
 							        			<output value="Okay, Economy class it is."/>
 							        			<var name="cartype" value="$Anothertext" scope="user"/>
 							        			<context if = "empty($DropoffAdress" modal="true">
 							        				<context id = "dropoff"/>
 							        			</context>
 							        	</context>
-							        	<context id = "Comfort" if "full$Comfort">
+							        	<context id = "Comfort" if = "full$Comfort">
 							        			<output value="Okay, Comfort class it is."/>
 							        			<var name="cartype" value="$Anothertext" scope="user"/>
 							        			<context if = "empty($DropoffAdress" modal="true">
 							        				<context id = "dropoff"/>
 							        			</context>
 							        	</context>
-							        	<context id = "Nothing" if "empty$Economy" and "empty$Business" and "empty$Comfort">
+							        	<context id = "Nothing" if = "empty$Economy" and "empty$Business" and "empty$Comfort">
 							        			<output value="Don't quite understand you, sorry. Please repeat what class would you like"/>
 							        			<context id= "cartype"/>
 							        	</context>

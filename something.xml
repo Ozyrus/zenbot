@@ -68,7 +68,7 @@
 												<context id ='Business'/>
 										</input>
 										<input pattern = "(да|ага|угу|йеп|угумс)">
-					        			<var name="cartype" value="Business" scope="user"/>
+					        			<var name="cartype" value="Бизнес" scope="user"/>
 					        				<context id = "dropoff"/>
 					        			</input>
 					        			<input pattern = "(нет|неа|не|ноуп|нихуя)">
@@ -85,7 +85,7 @@
 												<context id ='Economy'/>
 										</input>
 					        			<input pattern = "(да|ага|угу|йеп|угумс)">
-					        			<var name="cartype" value="Economy" scope="user"/>
+					        			<var name="cartype" value="Эконом" scope="user"/>
 					        				<context id = "dropoff"/>
 					        			</input>
 					        			<input pattern = "(нет|неа|не|ноуп|нихуя)">
@@ -102,7 +102,7 @@
 												<context id ='Comfort'/>
 										</input>
 					        			<input pattern = "(да|ага|угу|йеп|угумс)">
-					        			<var name="cartype" value="Comfort" scope="user"/>
+					        			<var name="cartype" value="Комфорт" scope="user"/>
 					        				<context id = "dropoff"/>
 					        			</input>
 					        			<input pattern = "(нет|неа|не|ноуп|нихуя)">

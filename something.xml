@@ -1,0 +1,155 @@
+<context>
+	<input id = "startmessage" pattern = "/start">
+		<output value=" hey there! I am a bot for getting a Taxi. Say hey to me!"/> <!-- startmessage-->
+		<context id = "mainscenario">
+			<input id = "greeting_return" pattern="$Text">
+				<output value="Gotta say hay to me, man!!"/>
+				<context id ='mainscenario'/>
+			</input>
+		    <input id ="greeting" pattern="(hi|hello|hey|sup|start) *">
+		        <!-- Greet the user if we know his/her name -->
+		        <output value="Hello $UserName!" if="full($UserName)"/>
+		        <context id = "adressask"/>
+		        <!-- Or activate an inner context to ask the user about his/her name -->
+		        <context if="empty($UserName)" modal="true"> <!-- We use a modal context, so our bot will recognize any text as the user’s name -->
+		            <output value="Hi! What is your name?"/>
+		            <input pattern="$Text">
+		                <!-- Store the user’s name in the UserName variable with "user" scope to save it into database -->
+		                <var name="UserName" value="$Text" scope="user"/>
+		                <output value="Nice to meet you, $UserName!"/> <!-- Using the placeholder in output -->
+		                <context if="empty($Adress)" modal = "true" id = 'adressask'>
+				        	<output value="$UserName, Please write your address in Russian, beginning with city."/>
+				        	<input pattern = "$Text">
+				        		<!--Store user's adress -->
+				        		<get url="https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address" var="Adressjson">
+								    <param name="token" value="084d8c2952fc314d3d42d0df86afa2fb1503bd9d"/>
+								    <param name="query" value="$Text"/>
+								 </get>
+				        	<var name="Adress" value='get ("value", get(0, get("suggestions", $Adressjson)))' scope="user"/>
+				        	<output value = "Please confirm your adress. Is $Adress right?">
+				        		<input pattern = "(no|nope|No|Nope|Nah|nah)">
+				        			<output value="Oh, i must have heard you wrong. Can you please type your address again? Perhaps try being more specific."/>
+				        				<context id="adressask"/>
+				        		<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
+				        			<context if = "full($cartype)" modal = "true">
+					        		<output value="Alright, got it. Your adress is $Adress. Would you like to order $cartype to this location or choose another one?"/>
+					        			<input pattern = '(yes|order)*'>
+					        				<output value = 'sure. just enter your dropoff point'/>
+					        				<context id = "dropoff"/>
+					        			</input>
+					        			<input pattern = "(no|nope|No|Nope|Nah|nah|another|other *)">
+					        				<output value = 'okay, choose your destiny. Economy, Business, Comfort?'/>
+					        				<context id = "cartype"/>
+					        			</input>
+					        		</context>
+						        	<context if="empty($cartype)" modal = "true" id = "cartype">
+						        		<pattern name="Businesspat" value="(Business|VIP|business)"/>
+						        		<pattern name="Economypat" value="(Economy|Econom|Cheap|economy)"/>
+						        		<pattern name="Comfortpat" value="(Comfort|Normal|Any|comfort)"/>
+						        		<output value = "Now for the vehicle type. Around your location, there are Buisness class cars available, economy cars and comfort class. Which one would you like?" />
+						        		<input id = "class_return" pattern="$Text">
+											<output value="You gotta type in class type!"/>
+											<context id ='cartype'/>
+										</input>
+							        	<input pattern = "$Businesspat *">
+							        		<context id = "Business">
+							        			<output value="Okay, Business class it is. Is that right?"/>
+							        			<input id = "type_return1" pattern="$Text">
+													<output value="You gotta say yes or no, mate!"/>
+														<context id ='Business'/>
+												</input>
+												<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
+							        			<var name="cartype" value="Business" scope="user"/>
+							        				<context id = "dropoff"/>
+							        			</input>
+							        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
+							        				<output value ="Alright, just say again what would you like"/>
+							        					<context id = "cartype"/>
+							        			</input>
+								        	</context>
+								        </input>
+								        <input pattern = "$Economypat *">
+								        	<context id = "Economy">
+							        			<output value="Okay, Economy class, is it?"/>
+							        			<input id = "type_return2" pattern="$Text">
+													<output value="You gotta say yes or no, mate!"/>
+														<context id ='Economy'/>
+												</input>
+							        			<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
+							        			<var name="cartype" value="Economy" scope="user"/>
+							        				<context id = "dropoff"/>
+							        			</input>
+							        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
+							        				<output value ="Alright, just say again what would you like"/>
+							        					<context id = "cartype"/>
+							        			</input>
+								        	</context>
+								        </input>
+								        <input pattern = "$Comfortpat *">
+								        	<context id = "Comfort">
+							        			<output value="Okay, Comfort class, is it?"/>
+							        			<input id = "type_return3" pattern="$Text">
+													<output value="You gotta say yes or no, mate!"/>
+														<context id ='Comfort'/>
+												</input>
+							        			<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
+							        			<var name="cartype" value="Comfort" scope="user"/>
+							        				<context id = "dropoff"/>
+							        			</input>
+							        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
+							        				<output value ="Alright, just say again what would you like"/>
+							        					<context id = "cartype"/>
+							        			</input>
+								        	</context>
+								        </input>
+								        <input pattern = "$Text">
+								        	<context id = "Nothing">
+							        			<output value="Don't quite understand you, sorry. Maybe I should order a comfort for you?"/>
+							        			<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
+							        			<var name="cartype" value="Business" scope="user"/>
+							        				<context id = "dropoff"/>
+							        			</input>
+							        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
+							        				<output value ="Alright, just say again what would you like"/>
+							        					<context id = "cartype"/>
+							        			</input>
+								        	</context>
+								        </input>
+				        	</context>
+					        </input>
+				        </context>
+		            </input>
+		        </context>
+		    </input>
+		</context>
+		<context id="dropoff">
+				<output value="$UserName, i'm going to need your dropoff adress now. Our service operates only in Moscow, so you gotta write some Moscow street and house number"/>
+					<input pattern = "$Text">
+						<!--Store user's dropoff adress -->
+					<var name="DropoffAdress" value="$Text" scope="user"/>
+						<output value="Alright, got it. Your dropoff adress is $DropoffAdress"/>
+					<context id="Ridecalc"/>
+					</input>
+		</context>
+		<context id = "Ridecalc">
+			<output value="$UserName, Your ridefare will be 450 Roubles, for ride in $cartype car from $Adress to $DropoffAdress. Is that okay for you?"/>
+				<input pattern = "$Text">
+					<output value ="Gotta say yes or no, mate!"/>
+						<context id = "ridecalc"/>
+				</input>
+				<input pattern = "(Yes|Yea|Yeah|Ok|Fine|Y|y)">
+					<output value = "Great! Your car will be waiting in 5 minutes on $Adress. It is a white $cartype class car, plates are E547KX."/>
+					<context id = "stillasks">
+						<input id = "stillasks" pattern="$Text">
+							<output value = "Your car is on the way. It is a white $cartype class car, plates are E547KX."/>
+							<context id = 'stillasks'/>
+						</input>
+					</context>
+				</input>
+				<input pattern = "(No|Nope|Nah|N|no)">
+					<output value = "That's okay. You can just choose another class or dropoff adress!"/>
+					<context id ="cartype"/>
+				</input>
+		</context>	
+	</input>
+</context>

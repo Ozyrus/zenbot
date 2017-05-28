@@ -33,7 +33,6 @@
 										<context id ='checkadress'/>
 								</input>
 								<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
-			        			<var name="cartype" value="Business" scope="user"/>
 			        				<context id = "cartype"/>
 			        			</input>
 			        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
@@ -142,13 +141,12 @@
 								 </get>
 				        	<var name="DropoffAdress" value='get ("value", get(0, get("suggestions", $Dropoffadressjson)))' scope="user"/>
 				        	<context id = "checkdropoffadress">
-				        	<output value="Let's check your address. Is it $Adress?"/>
+				        	<output value="Let's check your address. Is it $DropoffAdress?"/>
 					        	<input id = "type_return2" pattern="$Text">
 									<output value="You gotta say yes or no, mate!"/>
 										<context id ='checkdropoffadress'/>
 								</input>
 								<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
-			        			<var name="cartype" value="Business" scope="user"/>
 			        				<context id = "ridecalc"/>
 			        			</input>
 			        			<input pattern = "(no|nope|No|Nope|Nah|nah)">

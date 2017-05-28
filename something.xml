@@ -156,6 +156,7 @@
 			        					<context id = "dropoff"/>
 			        			</input>
 			        		</context>
+			        		</input>
 		</context>
 		<context id = "Ridecalc">
 			<output value="$UserName, Your ridefare will be 450 Roubles, for ride in $cartype car from $Adress to $DropoffAdress. Is that okay for you?"/>

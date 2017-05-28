@@ -142,12 +142,12 @@
 				        	<var name="DropoffAdress" value='get ("value", get(0, get("suggestions", $Dropoffadressjson)))' scope="user"/>
 				        	<context id = "checkdropoffadress">
 				        	<output value="Let's check your address. Is it $DropoffAdress?"/>
-					        	<input id = "type_return2" pattern="$Text">
+					        	<input id = "type_return3" pattern="$Text">
 									<output value="You gotta say yes or no, mate!"/>
 										<context id ='checkdropoffadress'/>
 								</input>
 								<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
-			        				<context id = "ridecalc"/>
+			        				<context id = "Ridecalc"/>
 			        			</input>
 			        			<input pattern = "(no|nope|No|Nope|Nah|nah)">
 			        				<output value ="Alright, just say again what would you like"/>

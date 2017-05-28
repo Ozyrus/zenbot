@@ -30,6 +30,7 @@
 					        		<input pattern = "(no|nope|No|Nope|Nah|nah)">
 					        			<output value="Oh, i must have heard you wrong. Can you please type your address again? Perhaps try being more specific."/>
 					        				<context id="adressask"/>
+					        		</input>
 					        		<input pattern = "(yes|yeah|sure|ok|Yes|Yeah|Sure)">
 					        			<context if = "full($cartype)" modal = "true">
 						        		<output value="Alright, got it. Your adress is $Adress. Would you like to order $cartype to this location or choose another one?"/>

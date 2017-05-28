@@ -25,7 +25,7 @@
 								    <param name="token" value="084d8c2952fc314d3d42d0df86afa2fb1503bd9d"/>
 								    <param name="query" value="$Text"/>
 								 </get>
-				        	<var name="Adress" value='get "value", get(1, get("suggestions", $Adressjson))' scope="user"/>
+				        	<var name="Adress" value='get ("value", get(1, get("suggestions", $Adressjson)))' scope="user"/>
 				        	<context if = "full($cartype)" modal = "true">
 			        		<output value="Alright, got it. Your adress is $Adress. Would you like to order $cartype to this location or choose another one?"/>
 			        			<input pattern = '(yes|order)*'>

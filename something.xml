@@ -26,7 +26,7 @@
 								    <param name="query" value="$Text"/>
 								 </get>
 				        	<var name="Adress" value='get ("value", get(0, get("suggestions", $Adressjson)))' scope="user"/>
-					        	<output value = "Please confirm your adress. Is $Adress right?">
+					        	<output value = "Please confirm your adress. Is $Adress right?"/>
 					        		<input pattern = "(no|nope|No|Nope|Nah|nah)">
 					        			<output value="Oh, i must have heard you wrong. Can you please type your address again? Perhaps try being more specific."/>
 					        				<context id="adressask"/>

@@ -26,6 +26,7 @@
 								    <param name="query" value="$Text"/>
 								 </get>
 				        	<var name="Adress" value='get ("value", get(0, get("suggestions", $Adressjson)))' scope="user"/>
+				        	<context id = "checkadress">
 				        	<output value="Let's check your address. Is it $Adress?"/>
 					        	<input id = "type_return2" pattern="$Text">
 									<output value="You gotta say yes or no, mate!"/>
@@ -39,6 +40,7 @@
 			        				<output value ="Alright, just say again what would you like"/>
 			        					<context id = "adressask"/>
 			        			</input>
+			        		</context>
 				        	<context if = "full($cartype)" modal = "true">
 			        		<output value="Alright, got it. Your adress is $Adress. Would you like to order $cartype to this location or choose another one?"/>
 			        			<input pattern = '(yes|order)*'>

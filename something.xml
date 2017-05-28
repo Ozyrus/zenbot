@@ -22,7 +22,7 @@
 				        	<input pattern = "$Text">
 				        		<!--Store user's adress -->
 				        		<get url="https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address" var="Adressjson">
-								    <param name="token" value="5ef98f5781a106962077fb18109095f9f11ebac1"/>
+								    <param name="token" value="084d8c2952fc314d3d42d0df86afa2fb1503bd9d"/>
 								    <param name="query" value="$Text"/>
 								 </get>
 				        	<var name="Adress" value='get("value", get(1, $Adressjson))' scope="user"/>

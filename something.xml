@@ -126,7 +126,7 @@
 		    </input>
 		</context>
 		<context id="dropoff">
-				<output value="$UserName, i'm going to need your dropoff adress now. Our service operates only in Moscow, so you gotta write some Moscow street and house number"/>
+				<output value="$UserName, i'm going to need your dropoff adress now."/>
 					<input pattern = "$Text">
 						<!--Store user's dropoff adress -->
 					<var name="DropoffAdress" value="$Text" scope="user"/>

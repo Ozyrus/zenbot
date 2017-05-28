@@ -18,10 +18,14 @@
 		                <var name="UserName" value="$Text" scope="user"/>
 		                <output value="Nice to meet you, $UserName!"/> <!-- Using the placeholder in output -->
 		                <context if="empty($Adress)" modal = "true" id = 'adressask'>
-				        	<output value="$UserName, i'm going to need your adress now. Our service operates only in Moscow, so you gotta write some Moscow street and house number"/>
+				        	<output value="$UserName, Please write your address in Russian, beginning with city."/>
 				        	<input pattern = "$Text">
 				        		<!--Store user's adress -->
-				        	<var name="Adress" value="$Text" scope="user"/>
+				        		<get url="https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address" var="Adressjson">
+								    <param name="token" value="5ef98f5781a106962077fb18109095f9f11ebac1"/>
+								    <param name="query" value="$Text"/>
+								 </get>
+				        	<var name="Adress" value='get("value", get(1, $Adressjson))', scope="user"/>
 				        	<context if = "full($cartype)" modal = "true">
 			        		<output value="Alright, got it. Your adress is $Adress. Would you like to order $cartype to this location or choose another one?"/>
 			        			<input pattern = '(yes|order)*'>
